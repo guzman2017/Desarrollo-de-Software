@@ -1,0 +1,35 @@
+<div class="col-md-5 offset-md-0">
+  <div class="card">
+    <div class="card-body">
+ 
+<!--nuevo-->
+<form  style="max-width:500px;margin:auto">
+  
+  <div class="input-container">
+      <i class="fa fa-home icon" style="font-size: 1.5em;"></i>
+      <input class="input-field"  type="text" name="direccion" [(ngModel)]="especie.nombre_es "  placeholder="Tipo de proveedor"  autofocus autocomplete="off">
+    </div>
+
+    <div class="input-container">
+      <select name="proveedorfk" id="proveedorfk" class="form-control combo" [(ngModel)]="especie.proveedorfk">
+        <option value="-1" disabled selected>---Seleccionar nombre del proveedor---</option>
+        <option value="{{proveedor.id_pro}}" *ngFor="let proveedor of proveedores" >{{proveedor.nombre_pro}}</option>
+      </select>
+    </div>  
+      <br>
+      <button class="btn btn-block" (click)="edit ? updateEspecie() : saveNewEspecie()" (click)="showModal()">
+        <i class="fa fa-save  " style="font-size: 1.5em;"></i> Guardar tipo de proveedor
+    </button>
+
+</form>
+<!--nuevo-->
+
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <div class="card card-body text-left" style="color:#000000;">
+    <p>{{especie.nombre_es == '' ? 'Tipo de proveedor' : especie.nombre_es}}</p>
+  </div>
+</div>

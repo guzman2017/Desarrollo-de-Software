@@ -1,0 +1,40 @@
+<div class="wrap">
+  <div class="search">
+     <input type="text" class="searchTerm"  name="filterPost" placeholder="Buscar" 
+     [(ngModel)]="filterPost" autocomplete="off">
+     <button type="submit" class="searchButton">
+       <i class="fa fa-search"></i>
+    </button>
+  </div>
+</div>
+<table id="customers" class="borde centrado" >
+  <tr>
+    <th>Nombre del proveedor</th>
+    <th>Lugar</th>
+    <th>Teléfono</th>
+    <th>Email</th>
+    <th>Descripción</th>
+    <th>Foto</th>
+    <th>Costo</th>
+    <th> </th>
+    <th> </th>
+  </tr>
+  <tr *ngFor="let proveedor of proveedores | paginate: { itemsPerPage: 3, currentPage:pageActual} | filter3: filterPost">
+    <td>{{proveedor.nombre_pro}}</td>
+    <td>{{proveedor.lugar_pro}}</td>
+    <td>{{proveedor.telefono_pro}}</td>
+    <td>{{proveedor.email_pro}}</td>
+    <td>{{proveedor.descripcion_pro}}</td>
+    <td><img class="card-img-top" [src]="proveedor.foto_pro" width="100" height="170"></td>
+    <td>{{proveedor.costo_pro}}</td>
+    
+    <td><button class="btn btn-danger buttonborder" (click)="showModal()" (click)="deleteProveedor(proveedor.id_pro)"   >
+        <i class="fa fa-trash-o"></i>
+      </button>
+    </td>
+    <td><a [routerLink]="['/proveedores/edit', proveedor.id_pro]" class="btn btn-info btn-block buttonborder"  >
+      <i class="fa fa-pencil-square-o"></i>  
+    </a></td>
+  </tr>
+</table>    
+<pagination-controls (pageChange)="pageActual= $event"  previousLabel="Anterior" nextLabel="Siguiente" class="centrado"></pagination-controls>

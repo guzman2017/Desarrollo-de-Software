@@ -1,0 +1,31 @@
+page-search-location,
+.search-location {
+	ion-input,
+	ion-input::placeholder {
+		color: #fff;
+	}
+
+	
+
+	.fondo2 {
+ 
+		content: "";
+		background-image: url(’../../../../assets/img/lojaphoto.jpg) ;
+		background-size: cover;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		z-index: 0;
+	  }
+
+	  .div2 {
+		//border-style: double;
+		border-radius: 10px 10px 10px 10px;
+		-moz-border-radius: 10px 10px 10px 10px;
+		-webkit-border-radius: 10px 10px 10px 10px;
+		border: 4px solid #1a8ad9;
+	  }
+	
+}

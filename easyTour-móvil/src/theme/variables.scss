@@ -1,0 +1,59 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+@import "ionic.globals";
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+
+$text-color: #4c6df9;
+$background-color: #fff;
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary: #4c6df9,
+  secondary: #5b5ef4,
+  danger: #f53d3d,
+  light: rgb(12, 206, 231), //color del boton de la visita virtual
+  dark: #0039a2,
+  green: #3fbd88,
+  skyblue: #1fd3d3,
+  black: #000000,
+  blue: #268ee4f5,
+  melo: #ffcb75,
+  azul: #75a9ff,
+  aquamarine: #17f0f0,
+  color1: #000000,
+  color2: #00BFFF,
+  amarillo: #f0c14b,
+  white: white 
+
+ 
+
+  
+);
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+$ionicons-font-path: "../assets/fonts";
+@import "ionic.ionicons";

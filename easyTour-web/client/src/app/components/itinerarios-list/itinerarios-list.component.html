@@ -1,0 +1,38 @@
+<div class="wrap">
+  <div class="search">
+     <input type="text" class="searchTerm"  name="filterPost" placeholder="Buscar" 
+     [(ngModel)]="filterPost" autocomplete="off">
+     <button type="submit" class="searchButton">
+       <i class="fa fa-search"></i>
+    </button>
+  </div>
+</div>
+<table id="customers" class="borde" >
+  <tr>
+    <th>Destino</th>
+    <th>Fecha</th>
+    <th>Duración</th>
+    <th>Riesgo</th>
+    <th>Advertencia</th>
+    <th>Vacunas</th>
+    <th> </th>
+    <th> </th>
+  </tr>
+  <tr *ngFor="let itinerario of itinerarios | paginate: { itemsPerPage: 8, currentPage:pageActual} | filter5: filterPost">
+    <td>{{itinerario.destino_it}}</td>
+    <td>{{itinerario.fecha_it | date: 'yyyy-MM-dd'}}</td>
+    <td>{{itinerario.duracion_it}}</td>
+    <td>{{itinerario.riesgo_it}}</td>
+    <td>{{itinerario.advertencia_it}}</td>
+    <td>{{itinerario.vacunas_it}}</td>
+    
+    <td><button class="btn btn-danger buttonborder" (click)="showModal()" (click)="deleteItinerario(itinerario.id_it)"   >
+        <i class="fa fa-trash-o"></i>
+      </button>
+    </td>
+    <td><a [routerLink]="['/itinerarios/edit', itinerario.id_it]" class="btn btn-info btn-block buttonborder"  >
+      <i class="fa fa-pencil-square-o"></i>  
+    </a></td>
+  </tr>
+</table>    
+<pagination-controls (pageChange)="pageActual= $event"  previousLabel="Anterior" nextLabel="Siguiente" class="centrado"></pagination-controls>

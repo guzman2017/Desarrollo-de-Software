@@ -1,0 +1,36 @@
+<div class="wrap">
+  <div class="search">
+     <input type="text" class="searchTerm"  name="filterPost" placeholder="Buscar" 
+     [(ngModel)]="filterPost" autocomplete="off">
+     <button type="submit" class="searchButton">
+       <i class="fa fa-search"></i>
+    </button>
+  </div>
+</div>
+
+<div class="col-md-4" *ngFor="let guia of guias | paginate: {itemsPerPage: 3, currentPage: pageActual} | filter7: filterPost">
+
+<div class="card text-center">
+
+  <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+    {{guia.nombre_guia}}
+    <button class="btn btn-danger buttonborder size" (click)="deleteGuia(guia.id_guia)" (click)="showModal()">
+      <i class="far fa-trash-alt"> </i> 
+    </button>
+  </div>
+
+  <img class="card-img-top" [src]="guia.imagen_guia"width="100" height="170">
+  
+  <div class="card-body color">
+    <!--Vista de los lugares Turisticos-->
+    
+    <!-- <p>{{guia.nombre_guia}}</p> -->
+    <p>C.I : {{guia.cedula_guia}}</p>
+    <p>Idioma nativo: {{guia.idioma_guia}}</p>
+    <a [routerLink]="['/guias/edit', guia.id_guia]" class="btn btn-info btn-block buttonborder size">
+      <i class="fa fa-pencil-square-o"> </i>   EDITAR
+    </a>
+  </div>
+</div>
+</div>
+<pagination-controls (pageChange)="pageActual= $event"  previousLabel="Anterior" nextLabel="Siguiente" class="centrado"></pagination-controls>

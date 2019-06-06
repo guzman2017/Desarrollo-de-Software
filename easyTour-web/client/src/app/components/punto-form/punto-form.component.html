@@ -1,0 +1,56 @@
+
+
+<div class="col-md-6 offset-md-0">
+  <div class="card">
+    <div class="card-body">
+     
+<!--nuevo-->
+<form  style="max-width:500px;margin:auto">
+  
+    <div class="input-container">
+        <i class="fa fa-home icon" style="font-size: 1.5em;"></i>
+        <input class="input-field"  type="text" placeholder="Nombre del sitio" name="title" [(ngModel)]="punto.nombre_pun" autofocus autocomplete="off">
+      </div>
+
+  <div class="input-container">
+    <i class="fa fa-info icon" style="font-size: 1.5em;"></i>
+    <textarea class="input-field" name="description" [(ngModel)]="punto.descripcion_pun" rows="2" placeholder="Descripción" autocomplete="off"></textarea>
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-map-o icon" style="font-size: 1.5em;"></i>
+    <input class="input-field"  type="text" placeholder="Dirección" name="direccion" [(ngModel)]="punto.direccion_pun" autofocus autocomplete="off">
+  </div>
+
+  <div class="input-container">
+     <i class="fa fa-camera icon" style="font-size: 1.5em;"></i>
+     <input class="input-field"  type="url" name="image URL"  placeholder="Foto" [(ngModel)]="punto.imagen_pun" autofocus autocomplete="off">
+  </div>  
+
+      <div class="input-container" >
+          <select name="localidadfk" id="localidadfk" class="form-control combo" [(ngModel)]="punto.localidadfk">
+              <option value="-1" disabled selected>---Seleccionar localidad---</option>
+              <option value="{{localidad.id}}" *ngFor="let localidad of localidades" >{{localidad.lugar_loc}}</option>
+            </select>
+      </div>  
+        <br>
+        <button class="btn btn-block" (click)="edit ? updatePunto() : saveNewPunto()" (click)="showModal()">
+            <i class="fa fa-save " style="font-size: 1.5em;"> </i>    Guardar Sitio
+        </button>
+
+</form>
+<!--nuevo-->
+
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <div class="card card-body text-left" style="color:#000000;">
+    <img [src]="punto.imagen_pun == '' ? '/assets/loading.gif' : punto.imagen_pun" alt="No Image" class="card-img-top">
+    <br>
+    <p style="font-weight: bold;" class="text-center">{{punto.nombre_pun == '' ? 'Punto de interés' : punto.nombre_pun}}</p>
+    <p>Descripción:  {{punto.descripcion_pun == '' ? '' : punto.descripcion_pun}}</p>
+    <p>Dirección: {{punto.direccion_pun == '' ? '' : punto.direccion_pun}}</p>    
+  </div>
+</div>

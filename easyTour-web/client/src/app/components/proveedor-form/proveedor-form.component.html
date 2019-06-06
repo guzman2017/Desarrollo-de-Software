@@ -1,0 +1,76 @@
+<h3></h3>
+<div class="col-md-6 offset-md-0">
+  <div class="card">
+    <div class="card-body">
+     
+
+<!--nuevo-->
+<form  style="max-width:500px;margin:auto">
+  
+    <div class="input-container">
+        <i class="fa fa-user icon" style="font-size: 1.5em;"></i>
+        <input class="input-field"  type="text" name="nombre" [(ngModel)]="proveedor.nombre_pro" placeholder="Nombre del proveedor" autofocus autocomplete="off">
+      </div>
+
+    <div class="input-container">
+    <i class="fa fa-bank icon" style="font-size: 1.5em;"></i>
+    <input class="input-field"  type="text" name="lugar" [(ngModel)]="proveedor.lugar_pro" placeholder="Lugar"  autofocus autocomplete="off">
+  </div>
+
+  <div class="input-container">
+      <i class="fa fa-phone icon" style="font-size: 1.5em;"></i>
+      <input class="input-field"  type="number" name="tel" [(ngModel)]="proveedor.telefono_pro" placeholder="Teléfono" autofocus autocomplete="off">
+    </div>
+
+    <div class="input-container">
+        <i class="fa fa-at icon" style="font-size: 1.5em;"></i>
+        <input class="input-field"  type="text" name="email" [(ngModel)]="proveedor.email_pro" placeholder="Email" autofocus autocomplete="off">
+      </div>
+
+      <div class="input-container">
+          <i class="fa fa-info icon" style="font-size: 1.5em;"></i>
+          <textarea class="input-field" name="descripcion" [(ngModel)]="proveedor.descripcion_pro " rows="2" placeholder="Descripción"  autocomplete="off"></textarea>
+        </div>
+
+       <div class="input-container">
+          <i class="fa fa-dollar icon" style="font-size: 1.5em;"></i>
+          <input class="input-field"  type="text" name="costo" [(ngModel)]="proveedor.costo_pro" placeholder="Precio"  autofocus autocomplete="off">
+      </div>  
+
+      <div class="input-container">
+          <i class="fa fa-camera icon" style="font-size: 1.5em;"></i>
+          <input class="input-field"  type="url" name="image URL" [(ngModel)]="proveedor.foto_pro" placeholder="Foto" autofocus autocomplete="off">
+      </div>  
+
+      <div class="input-container">
+          <select name="paquetefk" id="paquetefk" class="form-control combo" [(ngModel)]="proveedor.paquetefk">
+              <option value="-1" disabled selected>---Seleccionar ciudad de destino---</option>
+              <option value="{{paquete.id_paq}}" *ngFor="let paquete of paquetes" >{{paquete.ciudad_paq}}</option>
+            </select>
+      </div>  
+        <br>
+        <button class="btn btn-block" (click)="edit ? updateProveedor() : saveNewProveedor()" (click)="showModal()">
+            <i class="fa fa-save" style="font-size: 1.5em;">  </i>  Guardar Proveedor
+        </button>
+
+</form> 
+<!--nuevo-->
+
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <div class="card card-body text-center" style="color:#000000;">
+    <div class="ajusteimagen">
+    
+  <img [src]="proveedor.foto_pro == '' ? '/assets/proveedor1.png' : proveedor.foto_pro" alt="No Image"  width="75%" height="75%"></div>
+    <br> <br> <br>
+    <p class="text-center">Nombre del proveedor: {{proveedor.nombre_pro == '' ? '' : proveedor.nombre_pro}}</p>
+    <p class="text-left">Lugar: {{proveedor.lugar_pro == '' ? '' : proveedor.lugar_pro}}</p>
+    <p class="text-left">Teléfono: {{proveedor.telefono_pro == '' ? '' : proveedor.telefono_pro}}</p>
+    <p class="text-left">Email: {{proveedor.email_pro == '' ? '' : proveedor.email_pro}}</p>
+    <p class="text-left">Descripción: {{proveedor.descripcion_pro == '' ? '' : proveedor.descripcion_pro}}</p>
+    <p class="text-left">Precio $: {{proveedor.costo_pro == '' ? '' : proveedor.costo_pro}}</p>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+
+
+<div class="col-md-5 offset-md-0">
+  <div class="card">
+    <div class="card-body">
+    
+
+      <!--nuevo-->
+<form  style="max-width:500px;margin:auto">
+  
+    <div class="input-container">
+        <i class="fa fa-home icon" style="font-size: 1.5em;"></i>
+        <input class="input-field"  type="text" placeholder="Nombre de la categoría" name="title" [(ngModel)]="categoria.nombre_cat" autofocus autocomplete="off">
+      </div>
+
+      <div class="input-container">
+          <select name="puntofk" id="puntofk" class="form-control combo" [(ngModel)]="categoria.puntosfk">
+              <option value="-1" disabled selected>---Seleccionar punto de interés---</option>
+              <option value="{{punto.id_pun}}" *ngFor="let punto of puntos" >{{punto.nombre_pun}}</option>
+            </select>
+      </div>  
+        <br>
+        <button class="btn btn-block" (click)="edit ? updateCategoria() : saveNewCategoria()" (click)="showModal()">
+            <i class="fa fa-save "  style="font-size: 1.5em;" ></i>   Guardar categoría
+        </button>
+
+</form>
+<!--nuevo-->
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <div class="card card-body text-left" style="color:#000000;">
+    <p>{{categoria.nombre_cat == '' ? 'Nombre de la categoría' : categoria.nombre_cat}}</p>
+  </div>
+</div>

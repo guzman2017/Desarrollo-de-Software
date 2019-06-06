@@ -1,0 +1,65 @@
+<div class="col-md-6 offset-md-0">
+  <div class="card">
+    <div class="card-body">
+     
+      <!--nuevo-->
+<form  style="max-width:500px;margin:auto">
+  
+    <div class="input-container">
+        <i class="fa fa-home icon" style="font-size: 1.5em;"></i>
+        <input class="input-field"  type="text" name="title" [(ngModel)]="actividad.lugar_act" placeholder="Lugar de la actividad" autofocus autocomplete="off">
+      </div>
+
+  <div class="input-container">
+    <i class="fa fa-gamepad icon" style="font-size: 1.5em;"></i>
+    <input class="input-field"  type="text" name="nom" [(ngModel)]="actividad.nombre_act" placeholder="Nombre de la actividad" autofocus autocomplete="off">
+  </div>
+
+  <div class="input-container">
+      <i class="fa fa-info icon" style="font-size: 1.5em;"></i>
+      <textarea class="input-field" name="description" [(ngModel)]="actividad.descripcion_act" rows="2" placeholder="Descripción"  autocomplete="off"></textarea>
+    </div>
+
+    <div class="input-container">
+        <i class="fa fa-clock-o icon" style="font-size: 1.5em;"></i>
+        <input class="input-field"  type="text" name="hora nicio" [(ngModel)]="actividad.horainicio_act" placeholder="Hora inicio" autofocus autocomplete="off">
+      </div>
+
+      <div class="input-container">
+          <i class="fa fa-clock-o icon" style="font-size: 1.5em;"></i>
+          <input class="input-field"  type="text" name="horafin" [(ngModel)]="actividad.horafin_act " placeholder="Hora Fin" autofocus autocomplete="off">
+        </div>
+
+       
+      <div class="input-container">
+          <select name="itinerariofk" id="itinerariofk" class="form-control combo" [(ngModel)]="actividad.itinerariofk">
+              <option value="-1" disabled selected>---Seleccionar itinerario---</option>
+              <option value="{{itinerario.id_it}}" *ngFor="let itinerario of itinerarios" >{{itinerario.destino_it}}</option>
+            </select>
+      </div>  
+        <br>
+        <button class="btn btn-block" (click)="edit ? updateActividad() : saveNewActividad()" (click)="showModal()">
+            <i class="fa fa-save" style="font-size: 1.5em;"></i>  Guardar Actividad
+        </button>
+
+</form> 
+<!--nuevo-->
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <div class="card card-body text-left" style="color:#000000;">
+      <div class="ajusteimagen">
+          <img src="../../../assets/actividades.png" alt="No Image"  width="100%" height="100%"></div>
+          <br>
+          <br>
+          <br>
+    <p style="font-weight: bold;" class="text-center">{{actividad.lugar_act == '' ? 'Lugar ' : actividad.lugar_act}}</p>
+    <p>Nombre de la actividad: {{actividad.nombre_act == '' ? '' : actividad.nombre_act}}</p>
+    <p>Descripción: {{actividad.descripcion_act == '' ? '' : actividad.descripcion_act}}</p>
+    <p>Hora inicio: {{actividad.horainicio_act == '' ? '' : actividad.horainicio_act}}</p>
+    <p>Hora fin: {{actividad.horafin_act == '' ? '' : actividad.horafin_act}}</p>
+    
+  </div>
+</div>

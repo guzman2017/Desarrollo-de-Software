@@ -1,0 +1,65 @@
+<!-- -->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Registro de Pago</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="checkout-trip common-bg">
+  <!--Informacion del Tour-->
+  <div class="trip-info card round">
+    <div class="trip-image border-bottom" [ngStyle]="{'background-image': 'url(' + trip.imagen_loc + ')'}"></div>
+    
+    <ion-grid padding>
+      <ion-row>
+        <ion-col width-66>
+          <h6 ion-text color="primary">{{ trip.lugar_loc }}</h6>
+          <div>
+            <span class="bold">{{ trip.sub_name }}</span>
+            <br/>
+            <span ion-text color="dark">{{ datos.adultos }} Adultos</span>
+            <div>
+              <span ion-text color="dark">{{ datos.ninos }} Niños</span>
+            </div>
+            
+          </div>
+          <div margin-top>
+            <span ion-text color="dark">{{ date | date: 'EEE, MMM dd' }}</span>
+            <br/>
+            <span ion-text>{{ trip.location }}</span>
+          </div>
+          <div margin-top>
+            <ion-icon name="checkmark" class="text-green" *ngIf="trip.free_cancellation"></ion-icon>
+            <span ion-text *ngIf="trip.free_cancellation">Cancelación Gratis</span>
+          </div>
+        </ion-col>
+        <ion-col col-4>
+          <h6 ion-text>Total a Pagar</h6>
+          <h5 ion-text color="black" class="bold" no-margin class="text-black bold">{{ datos.precio | currency:'USD':true }}</h5>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!--Pago info-->
+
+  <div class="card round" margin-top>
+    <div padding>
+      <h6 ion-text color="primary">Valor total de la reserva: </h6>
+
+        <ion-item style="padding-bottom: 25px;" class="centervalor">
+        <ion-label ion-text color="black" class="bold">$</ion-label>
+        <ion-input ion-text color="black" type="number" [(ngModel)]="datos.precio"   class="bold" ></ion-input> 
+      </ion-item>
+
+      
+      <h4 *ngIf="paypalLoad">Cargando...</h4>
+      <div id="paypal-checkout-btn" class="centerpaypal" ></div>
+
+    </div>
+  </div>
+ 
+</ion-content>

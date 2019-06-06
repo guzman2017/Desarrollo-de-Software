@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+      <ion-title>
+          <strong></strong> Seleccione ciudad
+        </ion-title>
+    <!-- <ion-input placeholder="Ingrese un destino" padding-left autofocus></ion-input> -->
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="fondo2">
+  <div class="div2">
+    <!--Lista de ciudades-->
+    <ion-item *ngFor="let item of ciudades" tappable (click)="searchBy(item)" >
+      <ion-icon name="md-locate" item-left color="primary"></ion-icon>
+      <span ion-text color="primary">{{ item.ciudad_paq }}</span>
+    </ion-item>
+   
+  </div>
+</ion-content>

@@ -1,0 +1,64 @@
+
+<div class="col-md-6 offset-md-0">
+  <div class="card">
+    <div class="card-body">
+     
+
+<!--nuevo-->
+<form  style="max-width:500px;margin:auto">
+  
+  <div class="input-container">
+      <i class="fa fa-home icon" style="font-size: 1.5em;"></i>
+      <input class="input-field"  type="text" name="title" [(ngModel)]="itinerario.destino_it" placeholder="Lugar de destino" autofocus autocomplete="off">
+    </div>
+
+<div class="input-container">
+  <i class="fa fa-calendar icon" style="font-size: 1.5em;"></i>
+  <input class="input-field"  type="date"   name="description" [(ngModel)]="itinerario.fecha_it" placeholder="Fecha" autofocus autocomplete="off" min="2019-01-01">
+</div>
+
+<div class="input-container">
+    <i class="fa fa-clock-o icon" style="font-size: 1.5em;"></i>
+    <input class="input-field"  type="text" name="direccion" [(ngModel)]="itinerario.duracion_it" placeholder="Duración"   autofocus autocomplete="off">
+  </div>
+
+  <div class="input-container">
+      <i class="fa fa-exclamation-triangle icon" style="font-size: 1.5em;"></i>
+      <input class="input-field"  type="text" name="riesgo" [(ngModel)]="itinerario.riesgo_it" placeholder="Riego de peligrosidad" autofocus autocomplete="off">
+    </div>
+
+    <div class="input-container">
+        <i class="fa fa-exclamation icon" style="font-size: 1.5em;"></i>
+        <input class="input-field"  type="text" name="adver" [(ngModel)]="itinerario.advertencia_it" placeholder="Advertencia" autofocus autocomplete="off">
+      </div>
+
+     <div class="input-container">
+        <i class="fa fa-medkit icon" style="font-size: 1.5em;"></i>
+        <input class="input-field"  type="text" name="vac" [(ngModel)]="itinerario.vacunas_it" placeholder="Vacunas necesarias"  autofocus autocomplete="off">
+    </div>  
+
+      <br>
+      <button class="btn btn-block" (click)="edit ? updateItinerario() : saveNewItinerario()" (click)="showModal()">
+        <i class="fa fa-save" style="font-size: 1.5em;"></i>   Guardar Itinerario
+    </button>
+
+</form>
+<!--nuevo-->
+
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <div class="card card-body text-left" style="color:#000000;">
+  
+    <!-- <h3>{{itinerario.id_it}}</h3> -->
+    <p class="text-center" style="font-weight: bold;">Itinerario</p>
+    <p>Lugar de destino: {{itinerario.destino_it == '' ? '' : itinerario.destino_it}}</p>
+    <p>Fecha: {{itinerario.fecha_it | date: 'yyyy-MM-dd' == '' ? '' : itinerario.fecha_it | date: 'yyyy-MM-dd' }}</p>
+    <p>Duración: {{itinerario.duracion_it == '' ? ' ' : itinerario.duracion_it}}</p>
+    <p>Riesgo de peligrosidad: {{itinerario.riesgo_it == '' ? '' : itinerario.riesgo_it}}</p>
+    <p>Advertencia: {{itinerario.advertencia_it == '' ? '' : itinerario.advertencia_it}}</p>
+    <p>Vacunas necesarias: {{itinerario.vacunas_it == '' ? '' : itinerario.vacunas_it}}</p>
+  </div>
+</div>

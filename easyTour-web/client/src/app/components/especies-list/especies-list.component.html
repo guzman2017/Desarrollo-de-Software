@@ -1,0 +1,27 @@
+<div class="wrap">
+  <div class="search">
+     <input type="text" class="searchTerm"  name="filterPost" placeholder="Buscar" 
+     [(ngModel)]="filterPost" autocomplete="off">
+     <button type="submit" class="searchButton">
+       <i class="fa fa-search"></i>
+    </button>
+  </div>
+</div>
+<table id="customers" class="borde centrado" >
+  <tr>
+    <th>Tipo de proveedor</th>
+    <th> </th>
+    <th> </th>
+  </tr>
+  <tr *ngFor="let especie of especies | paginate: { itemsPerPage: 5, currentPage:pageActual} | filter4: filterPost">
+    <td>{{especie.nombre_es}}</td>
+    <td><button class="btn btn-danger buttonborder" (click)="showModal()" (click)="deleteEspecie(especie.id_es)"   >
+        <i class="fa fa-trash-o"></i>
+      </button>
+    </td>
+    <td><a [routerLink]="['/especies/edit', especie.id_es]" class="btn btn-info btn-block buttonborder"  >
+      <i class="fa fa-pencil-square-o"></i>  
+    </a></td>
+  </tr>
+</table>    
+<pagination-controls (pageChange)="pageActual= $event"  previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>

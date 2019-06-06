@@ -1,0 +1,62 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <strong></strong> Seleccione destino
+    </ion-title>
+    <ion-buttons end>  
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn common-bg fondo" >
+  
+  <ion-card no-margin margin-bottom class="full-width">    
+    <ion-item tappable (click)="choosePlace('from')" class="border-bottom">
+      <ion-icon name="home" color="primary" item-left></ion-icon>
+      <span>{{ search.name }}</span>
+    </ion-item>
+  </ion-card>
+
+  <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="doSearch()">
+    <ion-icon name="search"></ion-icon> Buscar
+  </button>
+
+          <div class="chats">
+          <div class="chatbox">
+            <div *ngFor="let chat of chats">
+              <div class="message sent" *ngIf="chat.type!=='bot' && chat.isMe">
+                 
+                {{chat.message}}
+                <span class="metadata">
+                  <span class="time">{{chat.createdAt | date: 'HH:MM '}}</span>
+                </span>
+              </div>
+              <div class="message received"  *ngIf="chat.type =='bot' && !chat.isMe">
+                  <ion-avatar item-start>
+                     
+                      <img src="../../assets/img/bot.png" > 
+                  </ion-avatar>
+                  {{chat.message}}
+                <span class="metadata">
+                  <span class="time">{{chat.createdAt | date: 'HH:MM'}}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          </div>
+
+      <ion-footer class="form-top">
+          <p text-center *ngIf="sending">Enviando mensaje....</p>
+          <div class="flex-items" padding>
+
+              <ion-input [(ngModel)]="message" name="message" class="input_message" placeholder="Asistente Virtual!"></ion-input>
+              <ion-icon (click)="sendMessage()" class="send" name="send"></ion-icon>
+            </div>
+      </ion-footer>
+</ion-content>
+
+

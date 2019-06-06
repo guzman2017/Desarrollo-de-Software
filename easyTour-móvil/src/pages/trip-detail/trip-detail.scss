@@ -1,0 +1,62 @@
+page-trip-detail,
+.trip-detail {
+
+    ul.highlight {
+    padding-left: 0;
+    font-size: 1.2rem;
+    list-style: none;
+
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+
+  // change text-sm size
+  .text-sm {
+    font-size: 1.2rem;
+    line-height: 2rem;
+   
+  }
+
+  // booking form style
+  .booking-form {
+
+    ion-grid {
+
+      ion-row {
+
+        ion-col {
+          padding: 0;
+          
+        }
+      }
+    }
+
+    .form-bottom {
+      display: flex;
+      align-items: center;
+
+      .pull-right {
+        margin-left: auto;
+       
+      }
+    }
+
+    
+  }
+}
+.ion-md-rate{
+  color: #00BFFF;
+  opacity: 1;
+}
+
+
+.sombra { 
+  text-shadow: 2px 4px 6px rgb(10, 10, 10); 
+  opacity: 1;
+} 
+
+.rating { 
+  opacity: 1;
+  // text-shadow: 2px 4px 6px rgb(27, 76, 180);
+} 

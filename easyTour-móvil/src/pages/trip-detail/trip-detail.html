@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-navbar  color="primary">  
+    <ion-title>
+      <span ion-text>{{ trip.lugar_loc }}</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="common-bg">
+  
+  <!--slides-->
+  <ion-slides class="to-top" pager>
+    <ion-slide >
+      <img src="{{trip.imagen_loc}}" alt="">
+    </ion-slide>
+  </ion-slides>
+    <!--slides-->
+
+  <!--services-->
+  <ion-grid class="border-bottom dark-bg" >
+    <ion-row>
+      <ion-col text-center>
+        <div class="text-sm" >
+          <div>
+            <ion-icon name="time" class="text-white"></ion-icon>
+            <span ion-text color="white" text-left>Duración     </span><span ion-text color="white">{{ trip.duracion }}</span>
+               <button ion-button icon-left ion-button class="pull-right"  color="amarillo" (click)="itinerarioPage()">   
+                <ion-icon name="happy">  </ion-icon>  Detalles 
+              </button>
+              
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ <!--rating-->
+ 
+  <div style="font-size: 30px" class="ion-md-rate" text-center>
+    <ion-icon *ngFor="let i of [0,1,2,3,4]" [name]="i < rate ? 'star' : 'star-outline'"
+       (click)="selectStar(i)"  class="rating"></ion-icon> 
+  </div>
+  
+  <!--Tarjeta principal-->
+  <div class="booking-form card round" margin>
+    <div class="border-bottom" padding>
+      <h5>{{ trip.lugar_loc }}</h5>
+
+      <ion-grid class="filters" no-padding margin-top>
+        <!--adultos-->
+        <ion-row>
+            <ion-col width-10 text-center>
+                <ion-icon name="remove-circle" class="text-2x sombra" tappable (click)="minusAdult()" [hidden]="adults < 2"
+                          color="color2"></ion-icon>
+              </ion-col>
+              <ion-col width-10 text-center>{{ adults }}</ion-col>
+              <ion-col width-10 text-center>
+                <ion-icon name="add-circle" class="text-2x sombra" tappable (click)="plusAdult()" color="color2" ></ion-icon>
+              </ion-col>
+          <ion-col class="adult" width-70 text-right>
+            <span ion-text color="primary"><strong>{{ trip.price_adult | currency:'USD':true }}</strong> Adultos</span>
+          </ion-col>
+         
+        </ion-row>
+         <!--fin adultos-->
+          <!--inicio ninos-->
+        <ion-row margin-top>
+            <ion-col width-10 text-center>
+                <ion-icon name="remove-circle" class="text-2x sombra" tappable (click)="minusChildren()" [hidden]="children < 1"
+                          color="color2"></ion-icon>
+              </ion-col>
+              <ion-col width-10 text-center>{{ children }}</ion-col>
+              <ion-col width-10 text-center>
+                <ion-icon name="add-circle" class="text-2x sombra" tappable (click)="plusChildren()" color="color2" ></ion-icon>
+              </ion-col>
+          <ion-col width-70 text-right> 
+            <span ion-text color="primary"><strong>{{ trip.price_child | currency:'USD':true }}</strong> Niños (0-12 años)</span>
+          </ion-col>
+         
+        </ion-row>
+         <!--fin ninos-->
+        
+        <ion-row margin-top *ngFor= "let proveedor of proveedores">
+            <ion-col width-70 text-left>
+                <span ion-text color="primary">{{proveedor.descripcion_pro}}</span>
+                </ion-col>    
+                <ion-col width-10 text-right>
+            <span ion-text color="primary"><strong>{{ proveedor.costo_pro | currency:'USD':true }}</strong> </span>
+          </ion-col>  
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div padding class="form-bottom">
+
+      <!--BOTON PAY-->
+      <button  ion-button class="pull-right button2" color="amarillo" tappable (click)="checkout()">Siguiente  {{ (adults * trip.price_adult) +
+       ( children * trip.price_child) + (costoproveedor) | currency:'USD':true }} 
+      </button>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <!-- <div class="border-bottom" padding>
+    <span ion-text color="primary" class="bold">DESCRIPCION</span>
+    <p ion-text>{{ trip.descripcion_loc }}</p>
+  </div>
+
+  <div class="border-bottom" padding>
+    <span ion-text color="primary" class="bold">UBICACIÓN</span>
+    <p ion-text>{{ trip.direccion }}</p>
+  </div>  -->
+</ion-content>

@@ -1,0 +1,73 @@
+<ion-header>
+    <ion-navbar  color="primary">
+      <ion-title>
+        <span ion-text>Itinerario</span>
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content class="common-bg">
+    
+ <ion-slides class="to-top" pager>
+    <ion-slide >
+      <img src="{{trip.imagen_loc}}" alt="">
+    </ion-slide>
+  </ion-slides>  
+   <ion-card *ngIf="itinerario">
+    <ion-card-header text-center color="blue">
+      Información 
+    </ion-card-header>       
+    <ion-list >
+       <p ion-text color="primary" style=" text-align: justify;
+       text-justify: inter-word;" ><span ion-text color="blue" text-left>Descripción:    </span>{{ trip.descripcion_loc }}</p>
+       <br>
+       <p ion-text color="primary"> <span ion-text color="blue" text-left>Dirección:    </span> {{ trip.direccion }}</p>
+    </ion-list>
+  </ion-card>
+  
+   <!--itinerario-->
+    <ion-card *ngIf="itinerario">
+      <ion-card-header text-center color="blue">
+        Itinerario
+      </ion-card-header>       
+      <ion-list >
+         <ion-label><span ion-text color="blue" text-left>Destino:    </span><span ion-text color="primary">{{itinerario.destino_it}}</span></ion-label>
+         <ion-label><span ion-text color="blue" text-left>Fecha:    </span><span ion-text color="primary">{{itinerario.fecha_it | date: 'yyyy-MM-dd'}}</span></ion-label>
+         <ion-label><span ion-text color="blue" text-left>Duración:    </span><span ion-text color="primary">{{itinerario.duracion_it}}</span></ion-label>
+         <ion-label><span ion-text color="blue" text-left>Advertencia:    </span><span ion-text color="primary">{{itinerario.advertencia_it}}</span></ion-label>
+         <ion-label><span ion-text color="blue" text-left> Vacunas necesarias:    </span><span ion-text color="primary">{{itinerario.vacunas_it}}</span></ion-label>
+      </ion-list>
+    </ion-card>
+    <!--fin itinerario-->
+
+    <!--actividades-->
+    <ion-card *ngIf="actividades">
+      <ion-card-header text-center color="blue">
+       Actividades
+      </ion-card-header>
+      <ion-list>
+        <div *ngFor= "let actividad of actividades">
+            <ion-label><span ion-text color="blue" text-left>Lugar:    </span><span ion-text color="primary">{{actividad.lugar_act}}</span></ion-label>
+            <p ion-text color="primary" style=" text-align: justify;
+            text-justify: inter-word;" ><span ion-text color="blue" text-left>Descripción:    </span>{{actividad.descripcion_act }}</p>
+            <!-- <ion-label><span ion-text color="blue" text-left>Descripción:    </span><span ion-text color="primary">{{actividad.descripcion_act}}</span></ion-label> -->
+            <ion-label><span ion-text color="blue" text-left>Hora inicio:    </span><span ion-text color="primary">{{actividad.horainicio_act}}</span></ion-label>
+            <ion-label><span ion-text color="blue" text-left>Hora fin:    </span><span ion-text color="primary">{{actividad.horafin_act}}</span></ion-label>
+       </div>    
+      </ion-list>
+    </ion-card>
+    <!--actividades-->
+
+    <!--guias-->
+    <ion-card *ngIf="guias">
+        <ion-card-header text-center color="blue">
+          Guías
+        </ion-card-header>
+        <ion-list>
+          <div *ngFor= "let guia of guias">
+              <ion-label><span ion-text color="blue" text-left>Guía asignado:    </span><span ion-text color="primary">{{guia.nombre_guia}}</span></ion-label>
+              <ion-label><span ion-text color="blue" text-left>Idioma nativo:    </span><span ion-text color="primary">{{guia.idioma_guia}}</span></ion-label>
+          </div> 
+        </ion-list>
+      </ion-card>   
+    <!--guias--> 
+    

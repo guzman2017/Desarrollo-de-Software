@@ -1,0 +1,74 @@
+<div class="col-md-6 offset-md-0">
+  <div class="card">
+    <div class="card-body">
+    
+<!--nuevo-->
+<form   >
+  
+    <div class="input-container">
+        <i class="fa fa-home icon" style="font-size: 1.5em;"></i>
+        <input class="input-field"  type="text" placeholder="Lugar" name="title" [(ngModel)]="game.lugar_loc" autofocus autocomplete="off">
+      </div>
+
+  <div class="input-container">
+    <i class="fa fa-info icon" style="font-size: 1.5em;"></i>
+    <textarea class="input-field" name="description" [(ngModel)]="game.descripcion_loc" rows="2" placeholder="Descripción" autocomplete="off"></textarea>
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-map-o icon" style="font-size: 1.5em;"></i>
+    <input class="input-field"  type="text" placeholder="Dirección" name="direccion" [(ngModel)]="game.direccion" autofocus autocomplete="off">
+  </div>
+
+  <div class="input-container">
+      <i class="fa fa-map-marker icon" style="font-size: 1.5em;"></i>
+      <input class="input-field"  type="number"  placeholder="Latitud" name="lat" [(ngModel)]="game.lat" autofocus autocomplete="off" >
+    </div>
+
+    <div class="input-container">
+        <i class="fa fa-map-marker icon" style="font-size: 1.5em;"></i>
+        <input class="input-field"  type="number"  placeholder="Longitud" name="lng" [(ngModel)]="game.lng" autofocus autocomplete="off">
+      </div>
+
+      <div class="input-container">
+          <i class="fa fa-clock-o icon" style="font-size: 1.5em;"></i>
+          <input class="input-field"  type="text" placeholder="Duración" name="dur" [(ngModel)]="game.duracion" autofocus autocomplete="off">
+        </div>
+
+       <div class="input-container">
+          <i class="fa fa-camera icon" style="font-size: 1.5em;"></i>
+          <input class="input-field"  type="url" name="image URL"  placeholder="Foto" [(ngModel)]="game.imagen_loc" autofocus autocomplete="off">
+      </div>  
+
+      <div class="input-container">
+          <select name="paquetefk" id="paquetefk" class="form-control combo" [(ngModel)]="game.paquetefk">
+              <option value="-1" disabled selected >---Seleccionar ciudad de destino---</option>
+              <option value="{{paquete.id_paq}}" *ngFor="let paquete of paquetes" >{{paquete.ciudad_paq}}</option>
+            </select>  
+      </div>  
+        <br>
+        <button class="btn btn-block " (click)="edit ?  updateGame() : saveNewGame()  " (click)="showModal()" >
+            <i class="fa fa-save  " style="font-size: 1.5em;" ></i> Guardar Localidad
+        </button>
+
+</form>
+<!--nuevo-->
+
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <div class="card card-body text-center" style="color:#000000;">
+    <div class="ajusteimagen">
+  <img [src]="game.imagen_loc == '' ? '/assets/no-image.png' : game.imagen_loc" alt="No Image"  width="85%" height="85%"></div>
+  <br><br> 
+    <p class="text-center" style="font-weight: bold;">{{game.lugar_loc == '' ? 'Localidad turística' : game.lugar_loc}}</p>
+    <p class="text-left">Descripción: {{game.descripcion_loc == '' ? '' : game.descripcion_loc}}</p>
+    <p class="text-left">Dirección: {{game.direccion == '' ? '' : game.direccion}}</p>
+    <p class="text-left">Latitud: {{game.lat == '' ? '' : game.lat}}</p>
+    <p class="text-left">Longitud: {{game.lng == '' ? '' : game.lng}}</p>
+    <p class="text-left">Duración: {{game.duracion == '' ? '' : game.duracion}}</p>
+    <p class="text-left"> Actualizado: {{game.creado_el_loc | date: 'yyyy-MM-dd'}}</p>
+  </div>
+</div>

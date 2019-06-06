@@ -1,0 +1,71 @@
+<div class="wrap">
+  <div class="search">
+     <input type="text" class="searchTerm"  name="filterPost" placeholder="Buscar" 
+     [(ngModel)]="filterPost" autocomplete="off">
+     <button type="submit" class="searchButton">
+       <i class="fa fa-search"></i>
+    </button>
+  </div>
+</div>
+     
+    <table id="customers" class="borde tableposition" >
+        <tr>
+          <th>Localidad</th>
+          <th>Descripción</th>
+          <th>Dirección</th>
+          <th>Latitud</th>
+          <th>Longitud</th>
+          <th>Duración</th>
+          <!-- <th>Actualizado</th> -->
+          <th>Mapa</th>
+          <th> </th>
+          <th> </th>
+        </tr>
+        <tr *ngFor="let game of games | paginate: { itemsPerPage: 3, currentPage:pageActual} | filter:filterPost">
+            
+          <td>{{game.lugar_loc}}</td>
+          <td>{{game.descripcion_loc}}</td>
+          <td>{{game.direccion}}</td>
+          <td>{{game.lat}}</td>
+          <td>{{game.lng}}</td>
+          <td>{{game.duracion}}</td>
+  
+          <!-- <td>{{game.creado_el_loc | date: 'yyyy-MM-dd'}}</td> -->
+          <td><button  class="btn btn-success buttonborder" type="button" (click)="openWindow(game.id)" >
+            <i class="fa fa-map-o" ></i>
+          </button>
+            
+          </td>
+          <td><button class="btn btn-danger buttonborder" (click)="showModal()" (click)="deleteGame(game.id)"   >
+              <i class="fa fa-trash-o" ></i>
+            </button>
+          </td>
+          <td><a [routerLink]="['/games/edit', game.id]" class="btn btn-info btn-block buttonborder"  >
+            <i class="fa fa-pencil-square-o"></i>  
+          </a></td>
+          
+        </tr>
+        
+      </table>   
+      
+      <pagination-controls (pageChange)="pageActual= $event"  previousLabel="Anterior" nextLabel="Siguiente" class="centrado"></pagination-controls>
+<!--mapa-->
+     <div class="mapajuste" >
+       <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="zoom"   >
+        <agm-marker *ngFor="let game of games" [latitude]="game.lat" [longitude]="game.lng" (markerClick)="openWindow(game.id)" >
+          <agm-snazzy-info-window  [isOpen]="isInfoWindowOpen(game.id)" class="infowindow" [maxWidth]="200" [closeWhenOthersOpen]="true"  >
+            <ng-template>
+              {{game.lugar_loc}}
+            </ng-template>
+          </agm-snazzy-info-window>
+        </agm-marker>
+        
+      </agm-map>
+    </div>     
+<!--mapa-->
+
+
+
+
+
+

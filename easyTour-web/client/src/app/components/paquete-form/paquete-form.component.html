@@ -1,0 +1,36 @@
+<div class="col-md-6 offset-md-0">
+  <div class="card">
+    <div class="card-body">
+      
+
+      <!--nuevo-->
+<form  style="max-width:500px;margin:auto">
+  
+  <div class="input-container">
+      <i class="fa fa-bank icon" style="font-size: 1.5em;"></i>
+      <input class="input-field"  type="text" name="ciudad" [(ngModel)]="paquete.ciudad_paq" placeholder="Ciudad"   autofocus autocomplete="off">
+    </div>
+
+    <div class="input-container">
+      <select name="itinerariofk" id="itinerariofk" class="form-control combo" [(ngModel)]="paquete.itinerariofk">
+        <option value="-1" disabled selected>---Seleccionar itinerario---</option>
+        <option value="{{itinerario.id_it}}" *ngFor="let itinerario of itinerarios" >{{itinerario.destino_it}}</option>
+      </select>
+    </div>  
+      <br>
+      <button class="btn btn-block" (click)="edit ? updatePaquete() : saveNewPaquete()" (click)="showModal()">
+        <i class="fa fa-save" style="font-size: 1.5em;"></i>   Guardar ciudad
+    </button>
+
+</form>
+<!--nuevo-->
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <div class="card card-body text-left" style="color:#000000;">
+    <p class="text-center" style="font-weight: bold;">Ciudad de destino </p>
+    <p> Ciudad: {{paquete.ciudad_paq == '' ? '' : paquete.ciudad_paq}}</p>
+  </div>
+</div>

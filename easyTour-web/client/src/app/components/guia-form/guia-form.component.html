@@ -1,0 +1,60 @@
+<div class="col-md-6 offset-md-0">
+  <div class="card">
+    <div class="card-body">
+  
+<!--nuevo-->
+<form  style="max-width:500px;margin:auto">
+  
+  <div class="input-container">
+      <i class="fa fa-user icon" style="font-size: 1.5em;"></i>
+      <input class="input-field"  type="text" name="nombre" [(ngModel)]="guia.nombre_guia " placeholder="Nombre del guía" autofocus autocomplete="off">
+    </div>
+
+<div class="input-container">
+  <i class="fa fa-id-card-o icon" style="font-size: 1.5em;"></i>
+  <input class="input-field"  type="number" name="ci" [(ngModel)]="guia.cedula_guia" placeholder="Cédula o pasaporte" autofocus autocomplete="off">
+</div>
+
+<div class="input-container">
+    <i class="fa fa-language icon" style="font-size: 1.5em;"></i>
+    <input class="input-field"  type="text" name="idioma" [(ngModel)]="guia.idioma_guia" placeholder="Idioma nativo" autofocus autocomplete="off">
+  </div>
+
+  <div class="input-container">
+      <i class="fa fa-camera icon" style="font-size: 1.5em;"></i>
+      <input class="input-field"  type="url" name="image URL" [(ngModel)]="guia.imagen_guia" placeholder="Foto" autofocus autocomplete="off">
+    </div>
+
+    <div class="input-container">
+      <select name="paquetefk" id="paquetefk" class="form-control combo" [(ngModel)]="guia.paquetefk">
+        <option value="-1" disabled selected>---Seleccionar ciudad de destino---</option>
+        <option value="{{paquete.id_paq}}" *ngFor="let paquete of paquetes" >{{paquete.ciudad_paq}}</option>
+      </select>
+    </div>  
+      <br>
+      <button class="btn btn-block" (click)="edit ? updateGuia() : saveNewGuia()" (click)="showModal()"  >
+        <i class="fa fa-save  " style="font-size: 1.5em;"></i>   Guardar Guía
+    </button>
+
+</form>
+<!--nuevo-->
+
+
+     
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <div class="card card-body text-center" style="color:#000000;">
+    <div class="ajusteimagen">
+    <img [src]="guia.imagen_guia == '' ? '/assets/user.png' : guia.imagen_guia" alt="No Image" width="58%" ></div>
+    
+    <p class="text-center" style="font-weight: bold;">Guía Turístico/a</p>
+    <p class="text-left">Nombre: {{guia.nombre_guia == '' ? '' : guia.nombre_guia}}</p>
+    <p class="text-left">Cédula o pasaporte: {{guia.cedula_guia == '' ? '' : guia.cedula_guia}}</p>
+    <p class="text-left">Idioma nativo: {{guia.idioma_guia == '' ? '' : guia.idioma_guia}}</p>
+    
+    
+  </div>
+</div>
