@@ -118,6 +118,7 @@ En el navegador de internet escriba  http://localhost:8200
 ```
 **Proceso 3**
 ![Recordit GIF](http://g.recordit.co/WxIMPzVNfs.gif)
+![Recordit GIF](http://g.recordit.co/uulCo0CibP.gif)
 
 ### Ejecutar Server DialogFlow
 ``` bash
