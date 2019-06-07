@@ -105,6 +105,7 @@ En el navegador de internet escriba  http://localhost:4200
 ```
 **Proceso 2**
 ![Recordit GIF](http://g.recordit.co/Cfw0EtMNLq.gif)
+![Recordit GIF](http://g.recordit.co/X5tdcOAJRn.gif)
 
 ### Ejecutar Proyecto móvil IonicFramework
 ``` bash
