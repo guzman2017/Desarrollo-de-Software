@@ -100,7 +100,7 @@ $ cd /tesis/web/client
 
 # Instalar dependencias
 $ npm install
-$ ng serve  
+$ ng serve -o
 En el navegador de internet escriba  http://localhost:4200
 ```
 **Proceso 2**
